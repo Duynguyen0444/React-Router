@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Route} from 'react-router-dom';
+import ProductItem from './ProductItem';
 
 class Product extends Component {
   render() {
@@ -7,23 +8,26 @@ class Product extends Component {
       {
         id: 1,
         name: 'iPhone 11',
+        slug: 'iphone',
         price: 999
       }, {
         id: 2,
         name: 'Macbook Pro',
+        slug: 'macbook',
         price: 1500
       }, {
         id: 3,
-        name: 'iPhone 8 Plus',
+        name: 'Samsung Note 10',
+        slug: 'samsung',
         price: 650
       }
     ];
-    var {match} = this.props;
-    console.log(match)
+    var {match} = this.props;    
+    var url = match.url;    
 
     var result = products.map((product, index) => {
       return (
-        <NavLink to="" key={index}>
+        <NavLink to={`${url}/${product.slug}`} key={index}>
           <li className="list-group-item">
             {product.id} - {product.name} - {product.price}
           </li>
@@ -37,7 +41,12 @@ class Product extends Component {
         <div className="row">
           <ul className="list-group">
             {result}
-          </ul>
+          </ul>          
+          {/* ProductItems router */}
+          <div className="row">
+            {/* Khai báo paragram sử dụng :name */}
+            <Route path="/products/:name" component={ProductItem} /> 
+          </div>          
         </div>
       </div>
     );

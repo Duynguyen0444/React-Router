@@ -22,7 +22,7 @@ const routes = [
         main: () => <Contact />
     },
     {
-        path: '/product',
+        path: '/products',
         exact: false,
         //match là tham số đầu vào của react-router
         main: ({match}) => <Product match={match} />

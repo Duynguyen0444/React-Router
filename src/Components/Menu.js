@@ -19,7 +19,7 @@ const menus = [
   },
   {
     name: 'Product',
-    to: '/product',
+    to: '/products',
     exact: false
   }
 ]
